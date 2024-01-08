@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  mongodb_container:
+    image: mongo:latest
+    environment: 
+      MONGO_INITDB_DATABASE: QC_ADMIN
+      MONGO_INITDB_ROOT_USERNAME: Main
+      MONGO_INITDB_ROOT_PASSWORD: Main123
+    ports:
+      - 27032:27017
+    volumes:
+      - mongodb_data_container:/data/db
+
+  redis:
+    image: "redis:latest"
+    ports:
+      - "6379:6379"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    
+volumes:
+  mongodb_data_container:
